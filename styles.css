@@ -18,3 +18,10 @@ body{background:radial-gradient(ellipse at 10% 8%,#eef2ea 0,transparent 45%),rad
 .privacy-note{font-size:11px;line-height:1.6;color:#84918a;margin:24px auto 0;max-width:410px}
 #invite h2{font-size:clamp(34px,6vw,51px)}
 @media(max-width:600px){.shell{padding-bottom:60px}}
+
+/* V5: botones optimizados para celular */
+#invite .actions{flex-wrap:nowrap;gap:10px;justify-content:center;width:100%;max-width:510px;margin-inline:auto}
+#invite #yes{font-size:clamp(16px,4.1vw,19px);font-weight:700;padding:19px 24px;min-height:64px;flex:1 1 auto;white-space:nowrap;box-shadow:0 12px 28px #59736130}
+#invite .no-area{width:105px;min-width:105px;height:68px;flex:0 0 105px;overflow:visible}
+#invite #no{font-size:12px;padding:12px 13px;min-height:43px;transition:transform .18s ease,background .18s ease;position:relative;left:auto;top:auto;white-space:nowrap}
+@media(max-width:420px){#invite .actions{gap:5px}#invite #yes{padding:17px 12px;font-size:15px;min-height:62px}#invite .no-area{width:90px;min-width:90px;flex-basis:90px}#invite #no{font-size:11px;padding:11px 10px}}

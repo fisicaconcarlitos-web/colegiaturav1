@@ -20,3 +20,7 @@ El script de Apps Script debe estar implementado como aplicación web con **Ejec
 - No es posible asegurar quién pulsa el enlace si se reenvía. Una respuesta se atribuye a Dánery por diseño, no por verificación de identidad.
 - El endpoint público admite respuestas no autenticadas y puede ser utilizado por otras personas que conozcan el enlace. Para un evento personal de una invitada es suficiente como prototipo, no como sistema de seguridad fuerte.
 - La función confirma el registro solo si Apps Script devuelve `ok: true`. El panel `admin.html` enlaza a Google Sheets, no expone respuestas públicamente.
+
+
+## Versión 5
+El botón afirmativo es más grande. El botón negativo se desplaza solo unos píxeles dentro de la zona de botones, sin salirse de la pantalla del móvil. La conexión de Google Sheets se conserva.
