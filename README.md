@@ -19,3 +19,7 @@
 - El botón «No» se desplaza cuatro veces como animación lúdica, luego permite rechazar. Existe una alternativa accesible visible para rechazar directamente.
 - La ceremonia está indicada como miércoles 25/11/2026, ingreso 18:00, inicio 19:00, auditorio Pedro Paulet Mostajo, Av. Independencia 150, Arequipa. No se ha incluido la instrucción de confirmación presencial del colegiado porque es distinta de la respuesta personal a esta invitación.
 - Las respuestas no se almacenarán hasta conectar Supabase. El mensaje de la interfaz lo indicará.
+
+
+## Versión 3
+Se ajustaron textos para Dánery, se eliminó el enlace alternativo de rechazo y se aplicó una paleta minimalista azul grisáceo, marfil y salvia. La respuesta negativa sigue disponible mediante el botón «No podré» (con movimiento limitado).
