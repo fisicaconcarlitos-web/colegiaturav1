@@ -1,25 +1,22 @@
-# Invitación Colegiatura V2 · Dánery
+# Invitación de colegiatura · V4
 
-## Publicar sin Codespaces
+Sitio HTML estático para Vercel (Framework Preset: **Other**). Incluye función serverless `api/rsvp.js` conectada a Google Apps Script.
 
-1. En GitHub, reemplaza los archivos de la versión anterior con los de esta carpeta. Conserva `index.html`, `styles.css`, `script.js`, `admin.html`, `privacidad.html`, `schema.sql`, `package.json` y la carpeta `api` en la raíz.
-2. En Vercel usa Framework Preset **Other**, Root Directory `./`, y sin Build Command ni Output Directory personalizados.
-3. El push a la rama `main` debería generar un despliegue automático si Git está conectado.
+## Publicación
 
-## Guardar respuestas y estadísticas opcionales
+1. En GitHub, sustituir los archivos V3 por los de este ZIP, incluidos `api/rsvp.js`, `index.html`, `script.js`, `styles.css`, `admin.html` y `privacidad.html`. **Eliminar** `api/visit.js` y `schema.sql` de la V3 si permanecen.
+2. Hacer commit en la rama `main`. Vercel debería desplegar automáticamente.
+3. Abrir la página y hacer una prueba de Sí o No. Comprobar la fila en Google Sheets. Borrar la fila de prueba antes de compartir.
 
-1. Crea un proyecto Supabase y ejecuta `schema.sql` en SQL Editor. Si ya tenías la tabla `respuestas` de V1, se conserva.
-2. En Vercel > Settings > Environment Variables configura `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` y `ADMIN_TOKEN` (una contraseña larga y única).
-3. Vuelve a desplegar. Visita `/admin.html` para consultar respuestas.
-4. Las estadísticas solo se registran si la visitante acepta. No se almacena IP en la aplicación. El panel incluido muestra respuestas, no el detalle de visitas. Para contar visitas puedes consultar la tabla `visitas` en Supabase.
+## Google Apps Script
 
-## Consideraciones
+El backend utiliza la URL /exec suministrada para esta invitación. No hace falta introducirla en la web. Opcionalmente se puede cambiar en Vercel mediante la variable `GOOGLE_SCRIPT_URL`.
 
-- La invitación está dirigida a Dánery, pero cualquiera que tenga el enlace puede abrirla. No hay forma fiable de identificar a una persona solo por IP; redes compartidas, VPN y conexiones móviles alteran esa información.
-- El botón «No» se desplaza cuatro veces como animación lúdica, luego permite rechazar. Existe una alternativa accesible visible para rechazar directamente.
-- La ceremonia está indicada como miércoles 25/11/2026, ingreso 18:00, inicio 19:00, auditorio Pedro Paulet Mostajo, Av. Independencia 150, Arequipa. No se ha incluido la instrucción de confirmación presencial del colegiado porque es distinta de la respuesta personal a esta invitación.
-- Las respuestas no se almacenarán hasta conectar Supabase. El mensaje de la interfaz lo indicará.
+El script de Apps Script debe estar implementado como aplicación web con **Ejecutar como: Yo** y **Acceso: Cualquier persona**, y su `doPost` debe aceptar JSON con `invitacion: "danery-colegiatura-2026"` y `respuesta: "Sí"` o `"No"` y devolver `{"ok":true}`. Si se modifica el script, actualizar su implementación.
 
+## Limitaciones
 
-## Versión 3
-Se ajustaron textos para Dánery, se eliminó el enlace alternativo de rechazo y se aplicó una paleta minimalista azul grisáceo, marfil y salvia. La respuesta negativa sigue disponible mediante el botón «No podré» (con movimiento limitado).
+- No hay seguimiento de aperturas ni almacenamiento de IP.
+- No es posible asegurar quién pulsa el enlace si se reenvía. Una respuesta se atribuye a Dánery por diseño, no por verificación de identidad.
+- El endpoint público admite respuestas no autenticadas y puede ser utilizado por otras personas que conozcan el enlace. Para un evento personal de una invitada es suficiente como prototipo, no como sistema de seguridad fuerte.
+- La función confirma el registro solo si Apps Script devuelve `ok: true`. El panel `admin.html` enlaza a Google Sheets, no expone respuestas públicamente.

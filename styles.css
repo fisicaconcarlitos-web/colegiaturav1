@@ -2,3 +2,19 @@
 
 /* V3: paleta sobria y tipografia adaptativa */
 #invite h2{font-size:clamp(36px,6vw,54px);max-width:640px;margin-left:auto;margin-right:auto}#invite .message{max-width:610px}#invite .question{font-size:clamp(26px,5vw,35px)}
+
+/* V4 · minimalismo luminoso */
+:root{--night:#303b38;--cream:#343d39;--gold:#849b88;--muted:#6d7973;--rose:#9aada0}
+body{background:radial-gradient(ellipse at 10% 8%,#eef2ea 0,transparent 45%),radial-gradient(ellipse at 90% 95%,#e8e9df 0,transparent 48%),#faf9f6;color:#303b38}
+.stars{background-image:radial-gradient(circle,#a8b9aa77 1px,transparent 1.5px),radial-gradient(circle,#b8b8a344 1px,transparent 1.5px);opacity:.45}
+.eyebrow{color:#788d7d}.hand{color:#8a9f90}.sub{color:#6a7870}.micro{color:#83928a}
+.envelope{box-shadow:0 22px 60px #54645b24}.scene h1,.scene h2{color:#2e3933}
+.primary{color:#fff;background:#627f6c;box-shadow:0 9px 25px #59736129}.primary:hover{box-shadow:0 12px 30px #59736145}
+.secondary{color:#55675c;background:#eff2ed;border:1px solid #dbe4da}.secondary:hover{background:#e3eae1}
+.message{color:#58665d}.message strong{color:#2d3e32}.message em{color:#55755f}
+.detail{background:#ffffffd9;border:1px solid #e5e9e1;box-shadow:0 16px 44px #526b5512;backdrop-filter:blur(8px)}
+.detail>div+div{border-top:1px solid #e9ece7}.detail span:not(.symbol){color:#66746c}
+.hint{color:#6d8372}.status{color:#587a61}.result-icon{color:#789a82}
+.privacy-note{font-size:11px;line-height:1.6;color:#84918a;margin:24px auto 0;max-width:410px}
+#invite h2{font-size:clamp(34px,6vw,51px)}
+@media(max-width:600px){.shell{padding-bottom:60px}}
