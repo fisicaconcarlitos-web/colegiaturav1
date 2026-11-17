@@ -1,35 +1,21 @@
-# Invitación de colegiatura — V1
+# Invitación Colegiatura V2 · Dánery
 
-## Contenido
-- `index.html`: invitación adaptable a móvil.
-- `styles.css`: diseño.
-- `script.js`: confirmación Sí/No.
-- `admin.html`: panel privado con totales y descarga CSV.
-- `api/rsvp.js`: API serverless para Vercel.
-- `schema.sql`: tabla Supabase.
+## Publicar sin Codespaces
 
-## Publicación en Vercel
-1. Descomprime el ZIP y sube esta carpeta a un repositorio GitHub.
-2. En Vercel: **Add New > Project > Import** y selecciona el repositorio.
-3. Framework preset: **Other**. Root Directory: raíz del proyecto. Deploy.
-4. La página se visualizará, pero las confirmaciones reales **no se guardarán** hasta configurar Supabase.
+1. En GitHub, reemplaza los archivos de la versión anterior con los de esta carpeta. Conserva `index.html`, `styles.css`, `script.js`, `admin.html`, `privacidad.html`, `schema.sql`, `package.json` y la carpeta `api` en la raíz.
+2. En Vercel usa Framework Preset **Other**, Root Directory `./`, y sin Build Command ni Output Directory personalizados.
+3. El push a la rama `main` debería generar un despliegue automático si Git está conectado.
 
-## Habilitar confirmaciones persistentes
-1. Crea un proyecto en Supabase y ejecuta `schema.sql` en SQL Editor.
-2. En Vercel > Project Settings > Environment Variables configura:
-   - `SUPABASE_URL`: URL de tu proyecto.
-   - `SUPABASE_SERVICE_ROLE_KEY`: clave secreta de servicio (nunca poner en HTML o JavaScript público).
-   - `ADMIN_TOKEN`: contraseña larga y aleatoria, solo para el administrador.
-3. Vuelve a desplegar en Vercel.
-4. Abre `/admin.html`, ingresa `ADMIN_TOKEN` y pulsa **Consultar respuestas**. Puedes exportar un CSV.
+## Guardar respuestas y estadísticas opcionales
 
-## Pruebas
-- Abriendo `index.html` localmente, las respuestas se guardan **solo en ese navegador** con localStorage; no aparecen en el panel privado. Es un modo demostración.
-- En Vercel, si falta configurar Supabase, aparecerá un error claro y no se simulará un registro exitoso.
-- Para probar la API localmente con variables de entorno, instala Vercel CLI y ejecuta `vercel dev`.
+1. Crea un proyecto Supabase y ejecuta `schema.sql` en SQL Editor. Si ya tenías la tabla `respuestas` de V1, se conserva.
+2. En Vercel > Settings > Environment Variables configura `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` y `ADMIN_TOKEN` (una contraseña larga y única).
+3. Vuelve a desplegar. Visita `/admin.html` para consultar respuestas.
+4. Las estadísticas solo se registran si la visitante acepta. No se almacena IP en la aplicación. El panel incluido muestra respuestas, no el detalle de visitas. Para contar visitas puedes consultar la tabla `visitas` en Supabase.
 
-## Antes de publicar la invitación definitiva
-Personalizar: nombre del colegiado, persona destinataria, fecha, hora, ubicación, fotografías y mensaje. Actualmente el formulario permite múltiples respuestas con el mismo nombre; no autentica identidad ni evita duplicados. En una siguiente versión se puede crear un enlace único por invitado, controles de duplicados y límite de acompañantes.
+## Consideraciones
 
-## Seguridad
-La clave de servicio se usa exclusivamente en la función serverless; la tabla tiene RLS habilitado sin políticas públicas. El panel requiere `ADMIN_TOKEN`. Para producción de alto tráfico, añadir límites de peticiones, controles antispam y autenticación administrativa más robusta.
+- La invitación está dirigida a Dánery, pero cualquiera que tenga el enlace puede abrirla. No hay forma fiable de identificar a una persona solo por IP; redes compartidas, VPN y conexiones móviles alteran esa información.
+- El botón «No» se desplaza cuatro veces como animación lúdica, luego permite rechazar. Existe una alternativa accesible visible para rechazar directamente.
+- La ceremonia está indicada como miércoles 25/11/2026, ingreso 18:00, inicio 19:00, auditorio Pedro Paulet Mostajo, Av. Independencia 150, Arequipa. No se ha incluido la instrucción de confirmación presencial del colegiado porque es distinta de la respuesta personal a esta invitación.
+- Las respuestas no se almacenarán hasta conectar Supabase. El mensaje de la interfaz lo indicará.
